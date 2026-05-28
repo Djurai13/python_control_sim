@@ -1,23 +1,30 @@
 from simulation import Simulation
-from environment import Environment
-from visualization import plot_heatmap
+from visualization import plot_maps
 
 import matplotlib.pyplot as plt
 
 def run():
+
     sim = Simulation()
-    env = Environment()
 
-    plt.figure()
+    plt.figure(figsize=(12, 6))
 
-    for step in range(200):
+    for step in range(300):
+
         sim.step()
-        env.update_density(sim.pythons)
 
-        plot_heatmap(env, step, sim.get_population())
+        print(
+            f"Step {step} | "
+            f"Population: {sim.get_population()}"
+        )
+
+        plot_maps(
+            sim.env,
+            step,
+            sim.get_population()
+        )
 
     plt.show()
 
 if __name__ == "__main__":
     run()
-    print(f"Step {step} | Population: {sim.get_population()}")

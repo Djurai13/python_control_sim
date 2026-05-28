@@ -1,10 +1,37 @@
 import matplotlib.pyplot as plt
 
-def plot_heatmap(env, step, population):
+def plot_maps(env, step, population):
+
     plt.clf()
-    plt.title(f"Python Simulation Step {step} | Population: {population}")
 
-    plt.imshow(env.get_heatmap(), cmap="hot", interpolation="nearest")
-    plt.colorbar(label="Python Density")
+    plt.suptitle(
+        f"Step {step} | Population: {population}"
+    )
 
-    plt.pause(0.1)
+    # python density
+    plt.subplot(1, 2, 1)
+
+    plt.title("Python Density")
+
+    plt.imshow(
+        env.get_heatmap(),
+        cmap="hot",
+        interpolation="nearest"
+    )
+
+    plt.colorbar()
+
+    # habitat suitability
+    plt.subplot(1, 2, 2)
+
+    plt.title("Habitat Suitability")
+
+    plt.imshow(
+        env.get_suitability_map(),
+        cmap="Greens",
+        interpolation="nearest"
+    )
+
+    plt.colorbar()
+
+    plt.pause(0.05)
