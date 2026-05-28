@@ -1,0 +1,8 @@
+# Create a stable environment
+uv venv --python 3.12
+
+# Activate it
+.venv\Scripts\Activate.ps1
+
+# Install numpy cleanly
+uv pip install numpy
