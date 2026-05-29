@@ -7,7 +7,7 @@ def run():
 
     sim = Simulation()
 
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(14, 6))
 
     for step in range(300):
 
@@ -15,14 +15,11 @@ def run():
 
         print(
             f"Step {step} | "
-            f"Population: {sim.get_population()}"
+            f"Population: {sim.get_population()} | "
+            f"Total Removals: {sim.get_total_removals()}"
         )
 
-        plot_maps(
-            sim.env,
-            step,
-            sim.get_population()
-        )
+        plot_maps(sim, step)
 
     plt.show()
 
