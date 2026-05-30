@@ -13,19 +13,37 @@ class HunterTeam:
         self.x = random.randint(0, GRID_SIZE - 1)
         self.y = random.randint(0, GRID_SIZE - 1)
 
+        self.target_x = self.x
+        self.target_y = self.y
+
         self.removals = 0
 
     def move(self):
 
-        self.x += random.randint(-3, 3)
-        self.y += random.randint(-3, 3)
+        # move toward target
 
-        self.x = max(0, min(GRID_SIZE - 1, self.x))
-        self.y = max(0, min(GRID_SIZE - 1, self.y))
+        if self.x < self.target_x:
+            self.x += 1
 
-    def detect_and_remove(self, pythons, env):
+        elif self.x > self.target_x:
+            self.x -= 1
 
-        local_density = env.get_local_density(self.x, self.y)
+        if self.y < self.target_y:
+            self.y += 1
+
+        elif self.y > self.target_y:
+            self.y -= 1
+
+    def detect_and_remove(
+        self,
+        pythons,
+        env
+    ):
+
+        local_density = env.get_local_density(
+            self.x,
+            self.y
+        )
 
         vegetation_factor = (
             1 - env.vegetation[self.x, self.y]
@@ -36,9 +54,18 @@ class HunterTeam:
             + (local_density * 0.03)
         ) * vegetation_factor
 
+        detection_probability = min(
+            detection_probability,
+            0.95
+        )
+
         for p in pythons:
 
-            if p.alive and p.x == self.x and p.y == self.y:
+            if (
+                p.alive and
+                p.x == self.x and
+                p.y == self.y
+            ):
 
                 if random.random() < detection_probability:
 

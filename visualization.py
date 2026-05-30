@@ -13,7 +13,7 @@ def plot_maps(sim, step):
     # DENSITY MAP
     plt.subplot(1, 2, 1)
 
-    plt.title("Python Density")
+    plt.title("Optimized Suppression")
 
     plt.imshow(
         sim.env.get_heatmap(),
@@ -33,6 +33,28 @@ def plot_maps(sim, step):
         s=100,
         label="Hunters"
     )
+
+    # plot hotspots
+    if sim.hotspots:
+
+        hotspot_x = [
+            h[2]
+            for h in sim.hotspots[:10]
+        ]
+
+        hotspot_y = [
+            h[1]
+            for h in sim.hotspots[:10]
+        ]
+
+        plt.scatter(
+            hotspot_x,
+            hotspot_y,
+            c="lime",
+            marker="o",
+            s=50,
+            label="Hotspots"
+        )
 
     plt.legend()
 

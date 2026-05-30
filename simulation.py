@@ -1,10 +1,12 @@
 from python_agent import PythonAgent
 from environment import Environment
 from hunter import HunterTeam
+from optimizer import Optimizer
 
 from config import (
     INITIAL_PYTHONS,
-    NUM_HUNTERS
+    NUM_HUNTERS,
+    REDEPLOYMENT_INTERVAL
 )
 
 class Simulation:
@@ -12,6 +14,8 @@ class Simulation:
     def __init__(self):
 
         self.env = Environment()
+
+        self.optimizer = Optimizer()
 
         self.pythons = [
             PythonAgent()
@@ -27,12 +31,30 @@ class Simulation:
 
         self.total_removals = 0
 
+        self.hotspots = []
+
     def step(self):
 
-        # update spatial density
+        # update density
         self.env.update_density(self.pythons)
 
-        # hunters operate
+        # analyze hotspots
+        self.hotspots = self.optimizer.find_hotspots(
+            self.env
+        )
+
+        # redeploy hunters periodically
+        if (
+            self.step_count %
+            REDEPLOYMENT_INTERVAL == 0
+        ):
+
+            self.optimizer.assign_hunters(
+                self.hunters,
+                self.hotspots
+            )
+
+        # hunter operations
         for hunter in self.hunters:
 
             hunter.move()
@@ -45,10 +67,11 @@ class Simulation:
             )
 
             self.total_removals += (
-                hunter.removals - previous_removals
+                hunter.removals -
+                previous_removals
             )
 
-        # python population dynamics
+        # python dynamics
         new_pythons = []
 
         for p in self.pythons:
@@ -62,7 +85,9 @@ class Simulation:
 
             if p.alive:
 
-                baby = p.maybe_reproduce(self.env)
+                baby = p.maybe_reproduce(
+                    self.env
+                )
 
                 if baby:
                     new_pythons.append(baby)
