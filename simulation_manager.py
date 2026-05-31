@@ -1,5 +1,7 @@
 from simulation import Simulation
 
+import pandas as pd
+
 sim = Simulation()
 
 step_history = []
@@ -9,7 +11,10 @@ hotspot_history = []
 
 
 def record_state():
-    step_history.append(sim.step_count)
+
+    step_history.append(
+        sim.step_count
+    )
 
     population_history.append(
         sim.get_population()
@@ -24,7 +29,20 @@ def record_state():
     )
 
 
+def get_prediction_dataframe():
+
+    return pd.DataFrame(
+        {
+            "Step": step_history,
+            "Population": population_history,
+            "Removals": removal_history,
+            "Hotspots": hotspot_history
+        }
+    )
+
+
 def reset_simulation():
+
     global sim
 
     sim = Simulation()
