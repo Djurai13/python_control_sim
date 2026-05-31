@@ -8,7 +8,11 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
-from simulation_manager import sim, reset_simulation
+from simulation_manager import (
+    sim,
+    reset_simulation,
+    record_state
+)
 
 st.title("Operations Center")
 
@@ -17,16 +21,19 @@ col_a, col_b, col_c, col_d = st.columns(4)
 with col_a:
     if st.button("Run 1 Step"):
         sim.step()
+        record_state()
 
 with col_b:
     if st.button("Run 10 Steps"):
         for _ in range(10):
             sim.step()
+            record_state()
 
 with col_c:
     if st.button("Run 100 Steps"):
         for _ in range(100):
             sim.step()
+            record_state()
 
 with col_d:
     if st.button("Reset Simulation"):
@@ -68,4 +75,4 @@ st.write(
 
 st.write("Simulation Step:", sim.step_count)
 
-st.info("Sprint 2: Live simulation connected to dashboard")
+st.info("Sprint 3: History tracking enabled")
