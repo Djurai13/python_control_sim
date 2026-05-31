@@ -1,7 +1,9 @@
 from simulation import Simulation
 from visualization import plot_maps
+from gis import GISMap
 
 import matplotlib.pyplot as plt
+
 
 def run():
 
@@ -21,7 +23,26 @@ def run():
 
         plot_maps(sim, step)
 
+    print("\nGenerating GIS map...")
+
+    gis_map = GISMap()
+
+    gis_map.add_hotspots(
+        sim.hotspots
+    )
+
+    gis_map.add_hunters(
+        sim.hunters
+    )
+
+    gis_map.save()
+
+    print(
+        "GIS map saved to maps/everglades_map.html"
+    )
+
     plt.show()
+
 
 if __name__ == "__main__":
     run()
