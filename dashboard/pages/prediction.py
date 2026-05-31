@@ -51,32 +51,66 @@ else:
         df["Population"].iloc[-1]
     )
 
-    future_step = current_step + 50
-
-    predicted_population = int(
-        slope * future_step + intercept
+    forecast_50 = int(
+        slope * (current_step + 50)
+        + intercept
     )
 
-    col1, col2 = st.columns(2)
+    forecast_100 = int(
+        slope * (current_step + 100)
+        + intercept
+    )
+
+    forecast_200 = int(
+        slope * (current_step + 200)
+        + intercept
+    )
+
+    if forecast_200 < 1000:
+        risk_level = "LOW"
+
+    elif forecast_200 < 3000:
+        risk_level = "MEDIUM"
+
+    else:
+        risk_level = "HIGH"
+
+    col1, col2, col3, col4, col5 = st.columns(5)
 
     with col1:
-
         st.metric(
-            "Current Population",
+            "Current",
             current_population
         )
 
     with col2:
-
         st.metric(
-            "Predicted Population (+50 Steps)",
-            predicted_population
+            "+50",
+            forecast_50
+        )
+
+    with col3:
+        st.metric(
+            "+100",
+            forecast_100
+        )
+
+    with col4:
+        st.metric(
+            "+200",
+            forecast_200
+        )
+
+    with col5:
+        st.metric(
+            "Risk",
+            risk_level
         )
 
     future_steps = list(
         range(
             current_step,
-            future_step + 1
+            current_step + 201
         )
     )
 
@@ -89,7 +123,7 @@ else:
         {
             "Step": future_steps,
             "Forecast Population":
-            forecast_values
+                forecast_values
         }
     )
 
@@ -117,11 +151,15 @@ else:
         {
             "Current Step":
                 current_step,
-            "Forecast Horizon":
-                50,
             "Current Population":
                 current_population,
-            "Predicted Population":
-                predicted_population
+            "Population +50":
+                forecast_50,
+            "Population +100":
+                forecast_100,
+            "Population +200":
+                forecast_200,
+            "Risk Level":
+                risk_level
         }
     )
