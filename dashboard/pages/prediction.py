@@ -13,7 +13,8 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
 from simulation_manager import (
-    get_prediction_dataframe
+    get_prediction_dataframe,
+    sim
 )
 
 st.title("Prediction Engine")
@@ -51,6 +52,10 @@ else:
         df["Population"].iloc[-1]
     )
 
+    current_removals = int(
+        df["Removals"].iloc[-1]
+    )
+
     forecast_50 = int(
         slope * (current_step + 50)
         + intercept
@@ -68,12 +73,52 @@ else:
 
     if forecast_200 < 1000:
         risk_level = "LOW"
+        recommended_hunters = 4
 
     elif forecast_200 < 3000:
         risk_level = "MEDIUM"
+        recommended_hunters = 8
 
     else:
         risk_level = "HIGH"
+        recommended_hunters = 12
+
+    current_hunters = len(
+        sim.hunters
+    )
+
+    additional_hunters = max(
+        0,
+        recommended_hunters -
+        current_hunters
+    )
+
+    if current_population > 0:
+
+        suppression_ratio = (
+            current_removals /
+            current_population
+        )
+
+    else:
+
+        suppression_ratio = 0
+
+    if suppression_ratio > 0.30:
+
+        suppression_effectiveness = "HIGH"
+
+    elif suppression_ratio > 0.10:
+
+        suppression_effectiveness = "MODERATE"
+
+    else:
+
+        suppression_effectiveness = "LOW"
+
+    st.subheader(
+        "Operational Intelligence"
+    )
 
     col1, col2, col3, col4, col5 = st.columns(5)
 
@@ -107,6 +152,34 @@ else:
             risk_level
         )
 
+    st.divider()
+
+    col6, col7, col8, col9 = st.columns(4)
+
+    with col6:
+        st.metric(
+            "Current Hunters",
+            current_hunters
+        )
+
+    with col7:
+        st.metric(
+            "Recommended",
+            recommended_hunters
+        )
+
+    with col8:
+        st.metric(
+            "Additional Needed",
+            additional_hunters
+        )
+
+    with col9:
+        st.metric(
+            "Effectiveness",
+            suppression_effectiveness
+        )
+
     future_steps = list(
         range(
             current_step,
@@ -123,7 +196,7 @@ else:
         {
             "Step": future_steps,
             "Forecast Population":
-                forecast_values
+            forecast_values
         }
     )
 
@@ -144,22 +217,20 @@ else:
     )
 
     st.subheader(
-        "Forecast Summary"
+        "Management Recommendation"
     )
 
     st.write(
         {
-            "Current Step":
-                current_step,
-            "Current Population":
-                current_population,
-            "Population +50":
-                forecast_50,
-            "Population +100":
-                forecast_100,
-            "Population +200":
-                forecast_200,
             "Risk Level":
-                risk_level
+                risk_level,
+            "Current Hunters":
+                current_hunters,
+            "Recommended Hunters":
+                recommended_hunters,
+            "Additional Hunters Required":
+                additional_hunters,
+            "Suppression Effectiveness":
+                suppression_effectiveness
         }
     )
