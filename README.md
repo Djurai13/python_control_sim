@@ -1,90 +1,39 @@
 # Python Population Control Intelligence System (PPCIS)
 
-## Overview
+## Ecological Decision Support System (EDSS)
 
-The Python Population Control Intelligence System (PPCIS) is an ecological simulation and decision-support platform designed to model, monitor, and optimize invasive species control operations.
+PPCIS (Python Population Control Intelligence System) is an Ecological Decision Support System (EDSS) designed to model, monitor, forecast, and optimize invasive species control operations.
 
-The project began as an agent-based simulation of Burmese python populations and is evolving into a geospatial intelligence platform capable of supporting:
+The platform combines:
 
-* Population modeling
-* Habitat suitability analysis
-* Detection and removal operations
-* Adaptive suppression strategies
-* GIS visualization
-* Predictive analytics
-* AI-assisted decision making
+* Agent-Based Ecological Simulation
+* Operational Control Systems
+* GIS Intelligence
+* Analytics Dashboards
+* Population Forecasting
+* Operational Recommendations
 
-The long-term goal is to create a research-grade platform for invasive species management and ecological operations analysis.
+into a unified decision-support environment.
 
----
-
-# Key Features
-
-## Ecological Simulation
-
-Simulates:
-
-* Population growth
-* Mortality
-* Reproduction
-* Spatial movement
-
-using an agent-based modeling approach.
+Originally developed as a Burmese Python population simulation, PPCIS has evolved into a multi-module operational intelligence platform capable of supporting ecological research, invasive species management, and resource allocation analysis.
 
 ---
 
-## Habitat Intelligence
+# Project Vision
 
-Environmental layers influence behavior:
+PPCIS aims to answer three critical operational questions:
 
-* Temperature
-* Vegetation
-* Water availability
-* Habitat suitability
+### What is happening?
 
-Agents preferentially move toward favorable habitats.
+Current population, hotspots, hunter deployment, and removals.
 
----
+### What will happen?
 
-## Population Suppression
+Population forecasting, risk assessment, and trend analysis.
 
-Models active control measures:
+### What should we do?
 
-* Hunter teams
-* Detection probability
-* Removal operations
-* Operational constraints
-
----
-
-## Adaptive Optimization
-
-The platform identifies population hotspots and dynamically reallocates hunter resources to maximize suppression effectiveness.
-
-Features include:
-
-* Hotspot analysis
-* Priority targeting
-* Resource optimization
-* Continuous reassessment
-
----
-
-## GIS Integration
-
-Current GIS capabilities include:
-
-* Geographic coordinate conversion
-* Interactive map generation
-* Hotspot visualization
-* Hunter deployment visualization
-
-Future GIS enhancements:
-
-* Wetland overlays
-* Road networks
-* Waterway analysis
-* Operational sectors
+Operational recommendations, hunter allocation guidance, and suppression effectiveness analysis.
 
 ---
 
@@ -103,11 +52,163 @@ Detection & Removal
 Adaptive Optimization
           │
           ▼
-GIS Integration
+GIS Intelligence
           │
           ▼
-Decision Intelligence
+Analytics Engine
+          │
+          ▼
+Prediction Engine
+          │
+          ▼
+Operational Intelligence
 ```
+
+---
+
+# Core Capabilities
+
+| Capability                  | Status |
+| --------------------------- | ------ |
+| Agent-Based Simulation      | ✅      |
+| Population Modeling         | ✅      |
+| Reproduction Dynamics       | ✅      |
+| Mortality Modeling          | ✅      |
+| Hunter Teams                | ✅      |
+| Detection & Removal         | ✅      |
+| Hotspot Detection           | ✅      |
+| Adaptive Optimization       | ✅      |
+| GIS Mapping                 | ✅      |
+| Operations Dashboard        | ✅      |
+| Analytics Dashboard         | ✅      |
+| Population Forecasting      | ✅      |
+| Risk Assessment             | ✅      |
+| Operational Recommendations | ✅      |
+
+---
+
+# Dashboard Modules
+
+## Operations Center
+
+Provides real-time operational control of the simulation.
+
+Features:
+
+* Population Monitoring
+* Hotspot Monitoring
+* Hunter Monitoring
+* Removal Monitoring
+* Run 1 Step
+* Run 10 Steps
+* Run 100 Steps
+* Reset Simulation
+
+---
+
+## Analytics Engine
+
+Provides historical performance analysis.
+
+Features:
+
+* Population Trends
+* Removal Trends
+* Hotspot Trends
+* Interactive Plotly Visualizations
+* Historical Data Tables
+
+---
+
+## GIS Intelligence
+
+Provides geospatial visualization.
+
+Features:
+
+* Interactive Folium Mapping
+* Hotspot Visualization
+* Hunter Deployment Visualization
+* Geographic Coordinate Mapping
+
+Current Status:
+
+* Functional
+* Known tile rendering issue under investigation
+
+---
+
+## Prediction Engine
+
+Provides population forecasting.
+
+Features:
+
+* Population Forecast (+50 Steps)
+* Population Forecast (+100 Steps)
+* Population Forecast (+200 Steps)
+* Forecast Visualization
+* Risk Assessment
+
+---
+
+## Operational Intelligence
+
+Provides decision-support recommendations.
+
+Features:
+
+* Recommended Hunter Count
+* Additional Hunter Requirements
+* Suppression Effectiveness Assessment
+* Risk-Based Operational Guidance
+
+---
+
+# Ecological Simulation Components
+
+## Population Agents
+
+Models:
+
+* Movement
+* Reproduction
+* Mortality
+* Habitat Selection
+
+---
+
+## Habitat Intelligence
+
+Environmental factors include:
+
+* Vegetation
+* Environmental Suitability
+* Local Population Density
+
+Agents preferentially migrate toward favorable habitat.
+
+---
+
+## Hunter Teams
+
+Hunter teams perform:
+
+* Detection
+* Removal
+* Target Pursuit
+* Hotspot Suppression
+
+---
+
+## Adaptive Optimization
+
+The optimization engine continuously:
+
+* Identifies hotspots
+* Prioritizes targets
+* Reassigns hunter teams
+* Improves suppression efficiency
 
 ---
 
@@ -116,6 +217,20 @@ Decision Intelligence
 ```text
 python_control_sim/
 
+├── dashboard/
+│   ├── app.py
+│   ├── simulation_manager.py
+│   └── pages/
+│       ├── operations.py
+│       ├── analytics.py
+│       ├── gis.py
+│       └── prediction.py
+│
+├── docs/
+│
+├── maps/
+│   └── everglades_map.html
+│
 ├── config.py
 ├── environment.py
 ├── gis.py
@@ -125,78 +240,9 @@ python_control_sim/
 ├── python_agent.py
 ├── simulation.py
 ├── visualization.py
-├── maps/
-│   └── everglades_map.html
 ├── requirements.txt
 └── README.md
 ```
-
----
-
-# Completed Development Phases
-
-## Sprint 1 — Core Simulation Engine
-
-Implemented:
-
-* Agent-based population model
-* Spatial environment
-* Population tracking
-* Visualization framework
-
-Status: Complete
-
----
-
-## Sprint 2 — Ecological Intelligence
-
-Implemented:
-
-* Habitat suitability modeling
-* Environment-aware movement
-* Carrying capacity controls
-* Density-dependent reproduction
-
-Status: Complete
-
----
-
-## Sprint 3 — Detection & Suppression
-
-Implemented:
-
-* Hunter teams
-* Detection probability
-* Removal mechanics
-* Operational metrics
-
-Status: Complete
-
----
-
-## Sprint 4 — Adaptive Optimization
-
-Implemented:
-
-* Hotspot detection
-* Dynamic hunter assignment
-* Resource allocation
-* Suppression optimization
-
-Status: Complete
-
----
-
-## GIS Phase 1
-
-Implemented:
-
-* Geographic coordinate mapping
-* Folium integration
-* Interactive hotspot display
-* Hunter deployment visualization
-
-Status: Complete
 
 ---
 
@@ -211,21 +257,22 @@ Status: Complete
 * NumPy
 * Random
 
-## Visualization
+## Dashboard
 
-* Matplotlib
+* Streamlit
+
+## Analytics
+
+* Pandas
+* Plotly
 
 ## GIS
 
 * Folium
 
-## Planned
+## Forecasting
 
-* Streamlit
-* Plotly
-* GeoPandas
-* Scikit-Learn
-* Stable-Baselines3
+* NumPy
 
 ---
 
@@ -234,8 +281,8 @@ Status: Complete
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/python-control-intelligence.git
-cd python-control-intelligence
+git clone https://github.com/YOUR_USERNAME/PPCIS.git
+cd PPCIS
 ```
 
 Install dependencies:
@@ -244,7 +291,13 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Run the simulation:
+Launch Dashboard:
+
+```bash
+streamlit run dashboard/app.py
+```
+
+Run Simulation:
 
 ```bash
 python main.py
@@ -252,102 +305,131 @@ python main.py
 
 ---
 
-# Current Outputs
+# Typical Workflow
 
-The system currently produces:
-
-* Population simulations
-* Density heatmaps
-* Habitat suitability maps
-* Hotspot analysis
-* GIS visualizations
+```text
+Launch Dashboard
+        │
+        ▼
+Operations Center
+        │
+        ▼
+Generate Simulation Data
+        │
+        ▼
+Analytics Engine
+        │
+        ▼
+GIS Intelligence
+        │
+        ▼
+Prediction Engine
+        │
+        ▼
+Operational Recommendations
+```
 
 ---
 
-# Development Roadmap
+# Screenshots
 
-## Phase A — Operations Dashboard
+Create the following directory:
 
-Planned:
+```text
+docs/screenshots/
+```
 
-* Streamlit control center
-* Multi-page navigation
-* Operational metrics
-* Live simulation monitoring
+Recommended screenshots:
+
+* operations_page.png
+* analytics_page.png
+* gis_page.png
+* prediction_page.png
 
 ---
 
-## Phase B — Advanced GIS
+# Known Issues
 
-Planned:
+## GIS Tile Rendering
 
-* Wetlands
-* Roads
+The GIS subsystem successfully renders:
+
+* Hunter Locations
+* Hotspot Locations
+* Interactive Controls
+
+A known issue currently affects OpenStreetMap tile rendering under certain local deployment environments.
+
+This issue does not affect simulation logic, analytics, forecasting, or operational intelligence.
+
+---
+
+# Future Enhancements
+
+## Version 2.0
+
+### Advanced GIS
+
+* Wetland Layers
 * Waterways
-* Sector management
+* Road Networks
+* Sector Management
 
----
+### Advanced Forecasting
 
-## Phase C — Drone Surveillance
+* Scikit-Learn Models
+* Random Forest Forecasting
+* Time-Series Analysis
 
-Planned:
+### Decision Intelligence
 
-* Patrol routes
-* Search coverage
-* Detection events
-* Sensor modeling
+* Resource Planning
+* Budget Optimization
+* Control Strategy Evaluation
 
----
+### Reinforcement Learning
 
-## Phase D — Machine Learning
+* Adaptive Hunter Deployment
+* Autonomous Optimization Policies
 
-Planned:
+### Drone Surveillance
 
-* Hotspot forecasting
-* Population prediction
-* Risk analysis
-
----
-
-## Phase E — Reinforcement Learning
-
-Planned:
-
-* Autonomous hunter deployment
-* Adaptive control strategies
-* Long-term suppression optimization
+* Drone Agents
+* Search Coverage Analysis
+* Aerial Detection Modeling
 
 ---
 
 # Research Applications
 
-Potential use cases include:
+Potential applications include:
 
-* Invasive species management
-* Ecological operations research
-* Wildlife population modeling
-* Resource allocation optimization
-* Environmental intelligence systems
+* Invasive Species Management
+* Ecological Operations Research
+* Conservation Planning
+* Resource Allocation Optimization
+* Environmental Intelligence Systems
+* Decision Support Systems
 
 ---
 
 # Disclaimer
 
-This project is a simulation and research platform intended for educational, analytical, and experimental purposes. Results should not be interpreted as real-world ecological recommendations without validation using field data and domain expertise.
+PPCIS is a research and educational platform.
+
+Simulation outputs should not be interpreted as real-world ecological recommendations without validation using field data, ecological expertise, and operational constraints.
 
 ---
 
 # Author
 
-Kabir Said
+**Kabir Said**
 
-Project Focus:
+Areas of Interest:
 
 * Ecological Modeling
 * GIS Intelligence
 * Operations Research
-* Python Development
-* AI-Assisted Decision Systems
-
-```
-```
+* Data Analytics
+* Forecasting Systems
+* AI-Assisted Decision Support
