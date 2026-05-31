@@ -8,11 +8,11 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
-from simulation_manager import sim
+from simulation_manager import sim, reset_simulation
 
 st.title("Operations Center")
 
-col_a, col_b = st.columns(2)
+col_a, col_b, col_c, col_d = st.columns(4)
 
 with col_a:
     if st.button("Run 1 Step"):
@@ -22,6 +22,16 @@ with col_b:
     if st.button("Run 10 Steps"):
         for _ in range(10):
             sim.step()
+
+with col_c:
+    if st.button("Run 100 Steps"):
+        for _ in range(100):
+            sim.step()
+
+with col_d:
+    if st.button("Reset Simulation"):
+        reset_simulation()
+        st.rerun()
 
 population = sim.get_population()
 removals = sim.get_total_removals()

@@ -4,3 +4,7 @@ from simulation import Simulation
 # This persists across Streamlit page loads (as long as server is alive)
 
 sim = Simulation()
+
+def reset_simulation():
+    global sim
+    sim = Simulation()
