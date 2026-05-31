@@ -41,3 +41,17 @@
 ### Added
 
 - Core simulation engine
+
+## v0.5.1
+
+### Added
+
+- Shared simulation manager
+- Live population metrics
+- Live hotspot metrics
+- Live hunter metrics
+- Live removal metrics
+
+### Dashboard
+
+- Operations page connected to simulation engine
