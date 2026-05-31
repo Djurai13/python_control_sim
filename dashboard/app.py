@@ -1,7 +1,8 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Python Control System",
+    page_title="Python Population Control Intelligence System",
+    page_icon="🐍",
     layout="wide"
 )
 
@@ -11,9 +12,19 @@ st.title(
 
 st.markdown(
     """
-    Welcome to the Operations Dashboard.
+    ### Operations Dashboard
 
-    Use the sidebar to navigate
-    through system modules.
+    This platform provides:
+
+    - Population Monitoring
+    - GIS Intelligence
+    - Operational Analytics
+    - Future Prediction Systems
+
+    Use the navigation menu on the left.
     """
+)
+
+st.success(
+    "Dashboard foundation initialized."
 )

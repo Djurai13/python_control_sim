@@ -1,9 +1,17 @@
 import streamlit as st
 
-st.title(
-    "Prediction"
-)
+st.title("Prediction")
 
 st.info(
-    "Machine learning predictions will appear here."
+    "Machine Learning prediction models will appear here."
+)
+
+st.markdown(
+    """
+    Planned Features:
+
+    - Future Hotspots
+    - Expansion Risk
+    - Population Forecasts
+    """
 )

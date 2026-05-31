@@ -1,9 +1,18 @@
 import streamlit as st
 
-st.title(
-    "Analytics"
-)
+st.title("Analytics")
 
 st.info(
-    "Population and removal analytics will appear here."
+    "Operational analytics will appear here."
+)
+
+st.markdown(
+    """
+    Planned Charts:
+
+    - Population Trends
+    - Removal Trends
+    - Detection Efficiency
+    - Hunter Performance
+    """
 )

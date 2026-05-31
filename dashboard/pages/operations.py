@@ -7,27 +7,27 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.metric(
         "Population",
-        "1245"
+        "0"
     )
 
 with col2:
     st.metric(
         "Hotspots",
-        "17"
+        "0"
     )
 
 with col3:
     st.metric(
         "Hunters",
-        "8"
+        "0"
     )
 
 with col4:
     st.metric(
         "Removals",
-        "562"
+        "0"
     )
 
 st.info(
-    "Live simulation integration comes next."
+    "Live simulation integration will be added in Dashboard Sprint 2."
 )
