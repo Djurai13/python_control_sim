@@ -333,18 +333,43 @@ Operational Recommendations
 
 # Screenshots
 
-Create the following directory:
+## Dashboard Home
 
-```text
-docs/screenshots/
-```
+![Dashboard Home](docs/screenshots/dashboard_home.png)
 
-Recommended screenshots:
+The main entry point to PPCIS providing navigation to Operations, Analytics, GIS Intelligence, and Prediction modules.
 
-* operations_page.png
-* analytics_page.png
-* gis_page.png
-* prediction_page.png
+---
+
+## Operations Center
+
+![Operations Center](docs/screenshots/operations_page.png)
+
+Real-time simulation control and monitoring including population tracking, hotspot monitoring, hunter deployment, removals, and simulation execution controls.
+
+---
+
+## Analytics Engine
+
+![Analytics Engine](docs/screenshots/analytics_page.png)
+
+Historical trend analysis for population growth, suppression activity, hotspot development, and operational performance metrics.
+
+---
+
+## GIS Intelligence
+
+![GIS Intelligence](docs/screenshots/gis_page.png)
+
+Interactive geospatial visualization displaying hotspots, hunter deployment locations, and operational intelligence layers.
+
+---
+
+## Prediction Engine
+
+![Prediction Engine](docs/screenshots/prediction_page.png)
+
+Population forecasting, risk assessment, suppression effectiveness analysis, and operational recommendations.
 
 ---
 
