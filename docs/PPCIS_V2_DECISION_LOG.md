@@ -423,3 +423,99 @@ Template management becomes part of the import platform.
 
 Status:
 APPROVED
+
+# Decision 018
+
+Date: 2026-06-02
+
+Title:
+Worksheet Role Classification
+
+Decision:
+
+Excel worksheets shall be classified before import processing.
+
+Roles:
+
+- DATA
+- REFERENCE
+- SUMMARY
+- SYSTEM
+- UNKNOWN
+
+Reason:
+
+Not all worksheets contain importable datasets.
+
+Impact:
+
+Only DATA worksheets proceed to import processing.
+
+Status:
+APPROVED
+
+# Decision 019
+
+Date: 2026-06-02
+
+Title:
+Cross-Sheet Validation
+
+Decision:
+
+Excel imports shall support cross-sheet integrity validation.
+
+Reason:
+
+Workbook datasets may reference records located in other worksheets.
+
+Impact:
+
+Excel import framework requires cross-sheet validation capabilities.
+
+Status:
+APPROVED
+
+# Decision 020
+
+Date: 2026-06-02
+
+Title:
+Canonical Import Core
+
+Decision:
+
+CSV and Excel imports shall use a shared import core architecture.
+
+Reason:
+
+Avoid duplicate validation, staging, auditing, and quality assessment logic.
+
+Impact:
+
+Import adapters normalize source data before entering the shared import pipeline.
+
+Status:
+APPROVED
+
+# Decision 021
+
+Date: 2026-06-02
+
+Title:
+Template Versioning
+
+Decision:
+
+All official import templates shall be versioned.
+
+Reason:
+
+Template evolution must remain traceable and auditable.
+
+Impact:
+
+Import history stores template version information.
+
+Status:
+APPROVED
