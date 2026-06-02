@@ -500,6 +500,162 @@ APPROVED
 
 # Decision 021
 
+# Decision 022
+
+Date: 2026-06-02
+
+Title:
+Coordinate Reference System Validation
+
+Decision:
+
+All GeoJSON imports shall undergo Coordinate Reference System (CRS) validation before spatial processing.
+
+Initial Supported CRS:
+
+- EPSG:4326 (WGS84)
+
+Future support may include:
+
+- EPSG:3857
+- National and regional CRS standards
+
+Reason:
+
+GeoJSON datasets may originate from multiple GIS platforms using different coordinate systems.
+
+Without CRS validation, imported geometries may be stored in incorrect locations, resulting in invalid spatial analysis and reporting.
+
+Impact:
+
+The GeoJSON import framework shall include CRS detection, validation, and future transformation capabilities.
+
+Status:
+APPROVED
+
+# Decision 023
+
+Date: 2026-06-02
+
+Title:
+Spatial Similarity Detection
+
+Decision:
+
+GeoJSON imports shall support spatial similarity detection in addition to exact duplicate detection.
+
+Validation shall consider:
+
+- Geometry overlap percentage
+- Centroid distance
+- Area difference
+- Shape similarity
+
+Reason:
+
+Two spatial features may represent the same real-world object while differing slightly in coordinates.
+
+Exact geometry matching alone is insufficient.
+
+Impact:
+
+The import platform shall support advanced duplicate detection for spatial datasets.
+
+Status:
+APPROVED
+
+# Decision 024
+
+Date: 2026-06-02
+
+Title:
+Topology Validation Requirements
+
+Decision:
+
+Polygon and MultiPolygon imports shall undergo topology validation.
+
+Validation shall include:
+
+- Self-intersection detection
+- Ring validation
+- Gap detection
+- Overlap detection
+- Geometry integrity verification
+
+Reason:
+
+Topologically invalid geometries can corrupt GIS analysis and operational decision-making.
+
+Impact:
+
+Topology validation becomes a mandatory component of the GeoJSON import pipeline.
+
+Status:
+APPROVED
+
+# Decision 025
+
+Date: 2026-06-02
+
+Title:
+Spatial Metadata Registry
+
+Decision:
+
+All imported spatial datasets shall retain source metadata.
+
+Required metadata includes:
+
+- Source dataset
+- Import date
+- Original CRS
+- Import version
+- Validation version
+- Geometry type
+- Dataset owner
+
+Reason:
+
+Spatial datasets require traceability and auditability throughout their lifecycle.
+
+Impact:
+
+Spatial metadata shall be persisted alongside imported geometries.
+
+Status:
+APPROVED
+
+# Decision 026
+
+Date: 2026-06-02
+
+Title:
+Spatial Lineage Tracking
+
+Decision:
+
+PPCIS shall maintain lineage records for imported spatial features.
+
+Lineage records shall identify:
+
+- Source file
+- Import job
+- Source feature identifier
+- Imported feature identifier
+- Import timestamp
+
+Reason:
+
+Long-term ecological analysis requires traceability from imported geometry back to its original source.
+
+Impact:
+
+Spatial lineage tracking becomes part of the spatial import architecture.
+
+Status:
+APPROVED
+
 Date: 2026-06-02
 
 Title:
@@ -519,3 +675,4 @@ Import history stores template version information.
 
 Status:
 APPROVED
+
