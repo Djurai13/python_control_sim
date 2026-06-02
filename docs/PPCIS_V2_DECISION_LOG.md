@@ -205,3 +205,221 @@ Documents:
 
 Status:
 APPROVED
+
+# Decision 011
+
+Date: 2026-06-02
+
+Title:
+Authoritative Roadmap Selection
+
+Decision:
+
+PPCIS_V2_EXECUTION_ROADMAP_V2.md is designated as the authoritative execution roadmap for PPCIS v2.0.
+
+Reason:
+
+Roadmap Revision 2 reflects the approved architecture review, revised phase ordering, Simulation Persistence Platform, Forecast Intelligence prioritization, and governance updates.
+
+Impact:
+
+All future planning and execution activities shall reference PPCIS_V2_EXECUTION_ROADMAP_V2.md.
+
+PPCIS_V2_EXECUTION_ROADMAP.md is retained only as a historical artifact.
+
+Status:
+APPROVED
+
+# Decision 012
+
+Date: 2026-06-02
+
+Title:
+Governance Document Source Control Policy
+
+Decision:
+
+All PPCIS v2.0 governance artifacts must be maintained under the docs directory and committed to source control.
+
+Required Governance Documents:
+
+- PPCIS_V2_MASTER_PLAN.md
+- PPCIS_V2_PROGRAM_CONTROL.md
+- PPCIS_V2_EXECUTION_ROADMAP_V2.md
+- PPCIS_V2_PROJECT_STATUS.md
+- PPCIS_V2_DECISION_LOG.md
+- PPCIS_V2_SPRINT_LOG.md
+
+Reason:
+
+Project governance documents represent the authoritative source of truth for architecture, planning, decision history, execution status, and sprint history.
+
+Governance artifacts must be protected by version control to ensure:
+
+- Traceability
+- Auditability
+- Team collaboration
+- Historical reconstruction
+- Disaster recovery
+
+Impact:
+
+Governance documents become first-class project artifacts and must be updated as part of normal project execution.
+
+Future governance documents shall not remain as local-only files.
+
+Status:
+APPROVED
+
+Date: 2026-06-02
+
+Title:
+Governance Document Source Control Policy
+
+Decision:
+
+All governance artifacts must be committed to source control and maintained under the docs directory.
+
+Required Documents:
+
+- PPCIS_V2_MASTER_PLAN.md
+- PPCIS_V2_PROGRAM_CONTROL.md
+- PPCIS_V2_EXECUTION_ROADMAP_V2.md
+- PPCIS_V2
+
+# Decision 013
+
+Date: 2026-06-02
+
+Title:
+Schema Mapping Registry
+
+Decision:
+
+CSV imports shall use a schema mapping registry rather than relying on fixed column names.
+
+Reason:
+
+Real-world ecological datasets use inconsistent naming conventions.
+
+Examples:
+
+pop_count
+population
+count
+
+may all represent the same concept.
+
+Impact:
+
+CSV imports become more resilient to external data sources.
+
+Status:
+APPROVED
+
+# Decision 014
+
+Date: 2026-06-02
+
+Title:
+Duplicate Detection Required
+
+Decision:
+
+All imports must pass through duplicate detection.
+
+Reason:
+
+Duplicate imports can corrupt:
+
+- Forecasts
+- Analytics
+- GIS outputs
+- Historical observations
+
+Impact:
+
+Import framework requires duplicate detection mechanisms.
+
+Status:
+APPROVED
+
+# Decision 015
+
+Date: 2026-06-02
+
+Title:
+Geographic Boundary Validation
+
+Decision:
+
+Spatial imports must be validated against supported geographic boundaries.
+
+Reason:
+
+Valid coordinates may still be ecologically invalid.
+
+Impact:
+
+PostGIS validation becomes part of the import framework.
+
+Status:
+APPROVED
+
+# Decision 016
+
+Date: 2026-06-02
+
+Title:
+Import Recovery Strategy
+
+Decision:
+
+Import jobs must support recovery and restart capabilities.
+
+Statuses:
+
+- PENDING
+- PROCESSING
+- FAILED
+- RECOVERABLE
+- COMPLETED
+
+Reason:
+
+Large imports may be interrupted.
+
+Impact:
+
+Import architecture must support resumable processing.
+
+Status:
+APPROVED
+
+# Decision 017
+
+Date: 2026-06-02
+
+Title:
+Official CSV Templates
+
+Decision:
+
+PPCIS shall provide official CSV templates for supported dataset types.
+
+Templates:
+
+- Population Observations
+- Removal Events
+- Region Data
+
+Reason:
+
+Reduces user error and simplifies validation.
+
+Impact:
+
+Template management becomes part of the import platform.
+
+Status:
+APPROVED
