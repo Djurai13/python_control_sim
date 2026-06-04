@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgis/postgis:15-3.3
+
+    container_name: ppcis_postgres
+
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: ppcis_db
+      POSTGRES_USER: ppcis
+      POSTGRES_PASSWORD: ppcis
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - ppcis_data:/var/lib/postgresql/data
+
+volumes:
+  ppcis_data:
