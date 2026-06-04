@@ -676,3 +676,236 @@ Import history stores template version information.
 Status:
 APPROVED
 
+# Decision 027
+
+Date: 2026-06-02
+
+Title:
+API Source Registry and Ownership Model
+
+Decision:
+
+All API integrations shall be registered in the API Source Registry.
+
+Each source shall include:
+
+- Business Owner
+- Technical Owner
+- Data Steward
+- Support Contact
+- Service Criticality
+
+Reason:
+
+External data sources require accountability and governance throughout their lifecycle.
+
+Impact:
+
+API imports cannot be deployed without ownership information.
+
+Status:
+APPROVED
+
+# Decision 028
+
+Date: 2026-06-02
+
+Title:
+Connector Version Registry
+
+Decision:
+
+Every API connector shall be versioned and tracked.
+
+Tracked Information:
+
+- Connector Version
+- Supported API Version
+- Compatibility Status
+- Release Date
+
+Reason:
+
+External APIs evolve independently from PPCIS.
+
+Impact:
+
+Connector compatibility can be managed and audited.
+
+Status:
+APPROVED
+
+# Decision 029
+
+Date: 2026-06-02
+
+Title:
+Schema Drift Detection Engine
+
+Decision:
+
+The API Import Platform shall include automated schema drift detection.
+
+Detection Scope:
+
+- New Fields
+- Removed Fields
+- Renamed Fields
+- Data Type Changes
+
+Reason:
+
+External APIs may change unexpectedly.
+
+Impact:
+
+Schema changes can be identified before corrupting imported datasets.
+
+Status:
+APPROVED
+
+# Decision 030
+
+Date: 2026-06-02
+
+Title:
+Data Freshness Validation
+
+Decision:
+
+All API imports shall undergo freshness validation.
+
+Validation Criteria:
+
+- Dataset Timestamp
+- Last Updated Timestamp
+- Expected Refresh Window
+
+Reason:
+
+Successful API responses may still contain stale data.
+
+Impact:
+
+Stale datasets can be detected before entering production workflows.
+
+Status:
+APPROVED
+
+# Decision 031
+
+Date: 2026-06-02
+
+Title:
+API Data Provenance Model
+
+Decision:
+
+PPCIS shall maintain provenance records for all API-imported data.
+
+Tracked Information:
+
+- Source API
+- Endpoint
+- Import Job
+- Connector Version
+- Transformation Version
+- Import Timestamp
+
+Reason:
+
+Long-term auditability requires traceability back to the originating API source.
+
+Impact:
+
+Data provenance becomes part of the import platform architecture.
+
+Status:
+APPROVED
+
+# Decision 031
+
+Date: 2026-06-02
+
+Title:
+API Data Provenance Model
+
+Decision:
+
+PPCIS shall maintain provenance records for all API-imported data.
+
+Tracked Information:
+
+- Source API
+- Endpoint
+- Import Job
+- Connector Version
+- Transformation Version
+- Import Timestamp
+
+Reason:
+
+Long-term auditability requires traceability back to the originating API source.
+
+Impact:
+
+Data provenance becomes part of the import platform architecture.
+
+Status:
+APPROVED
+
+# Decision 032
+
+Date: 2026-06-02
+
+Title:
+API Health Monitoring Framework
+
+Decision:
+
+The API Import Platform shall continuously monitor API health.
+
+Metrics:
+
+- Availability
+- Response Time
+- Failure Rate
+- Uptime Percentage
+
+Reason:
+
+Import reliability depends on source availability and performance.
+
+Impact:
+
+Health metrics become part of operational monitoring.
+
+Status:
+APPROVED
+
+# Decision 033
+
+Date: 2026-06-02
+
+Title:
+Incremental Import Support
+
+Decision:
+
+The API Import Platform shall support:
+
+- Full Imports
+- Incremental Imports
+- Delta Imports
+
+Reason:
+
+Large datasets make full synchronization inefficient.
+
+Impact:
+
+Import strategies can scale as dataset volume increases.
+
+Status:
+APPROVED
+
