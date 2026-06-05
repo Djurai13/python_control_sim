@@ -11,3 +11,5 @@ alembic
 python-dotenv
 
 geoalchemy2
+
+pytest
