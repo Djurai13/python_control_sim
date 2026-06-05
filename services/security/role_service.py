@@ -14,12 +14,18 @@ class RoleService:
         repository: RoleRepository,
     ):
         self.repository = repository
+        self.db = repository.db
 
     def create_role(
         self,
         role_name: str,
         description: str | None = None,
     ) -> Role:
+
+        if not role_name.strip():
+            raise ValueError(
+                "Role name is required."
+            )
 
         existing_role = (
             self.repository.get_by_name(
@@ -37,9 +43,18 @@ class RoleService:
             description=description,
         )
 
-        self.repository.create(role)
+        try:
+            self.repository.create(role)
 
-        return role
+            self.db.commit()
+
+            self.db.refresh(role)
+
+            return role
+
+        except Exception:
+            self.db.rollback()
+            raise
 
     def get_role(
         self,
@@ -63,6 +78,13 @@ class RoleService:
         role: Role,
     ) -> None:
 
-        self.repository.delete(
-            role
-        )
+        try:
+            self.repository.delete(
+                role
+            )
+
+            self.db.commit()
+
+        except Exception:
+            self.db.rollback()
+            raise

@@ -14,12 +14,18 @@ class PermissionService:
         repository: PermissionRepository,
     ):
         self.repository = repository
+        self.db = repository.db
 
     def create_permission(
         self,
         permission_name: str,
         description: str | None = None,
     ) -> Permission:
+
+        if not permission_name.strip():
+            raise ValueError(
+                "Permission name is required."
+            )
 
         existing_permission = (
             self.repository.get_by_name(
@@ -37,11 +43,22 @@ class PermissionService:
             description=description,
         )
 
-        self.repository.create(
-            permission
-        )
+        try:
+            self.repository.create(
+                permission
+            )
 
-        return permission
+            self.db.commit()
+
+            self.db.refresh(
+                permission
+            )
+
+            return permission
+
+        except Exception:
+            self.db.rollback()
+            raise
 
     def get_permission(
         self,
@@ -65,6 +82,13 @@ class PermissionService:
         permission: Permission,
     ) -> None:
 
-        self.repository.delete(
-            permission
-        )
+        try:
+            self.repository.delete(
+                permission
+            )
+
+            self.db.commit()
+
+        except Exception:
+            self.db.rollback()
+            raise

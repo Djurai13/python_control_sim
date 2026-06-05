@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from database.models.user import User
 
 from database.repositories.user_repository import (
@@ -16,6 +18,7 @@ class UserService:
         repository: UserRepository,
     ):
         self.repository = repository
+        self.db = repository.db
 
     def create_user(
         self,
@@ -23,6 +26,21 @@ class UserService:
         email: str,
         password: str,
     ) -> User:
+
+        if not username.strip():
+            raise ValueError(
+                "Username is required."
+            )
+
+        if not email.strip():
+            raise ValueError(
+                "Email is required."
+            )
+
+        if not password.strip():
+            raise ValueError(
+                "Password is required."
+            )
 
         existing_user = (
             self.repository.get_by_username(
@@ -56,13 +74,22 @@ class UserService:
             password_hash=password_hash,
         )
 
-        self.repository.create(user)
+        try:
+            self.repository.create(user)
 
-        return user
+            self.db.commit()
+
+            self.db.refresh(user)
+
+            return user
+
+        except Exception:
+            self.db.rollback()
+            raise
 
     def get_user(
         self,
-        user_id,
+        user_id: UUID,
     ) -> User | None:
         return (
             self.repository.get_by_id(
@@ -102,6 +129,15 @@ class UserService:
         user: User,
     ) -> User:
 
-        user.is_active = False
+        try:
+            user.is_active = False
 
-        return user
+            self.db.commit()
+
+            self.db.refresh(user)
+
+            return user
+
+        except Exception:
+            self.db.rollback()
+            raise
