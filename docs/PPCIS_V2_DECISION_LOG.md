@@ -1,3 +1,5 @@
+
+
 # PPCIS v2.0 Decision Log
 
 Status: ACTIVE
@@ -500,6 +502,35 @@ APPROVED
 
 # Decision 021
 
+Date: 2026-06-02
+
+Title:
+GeoJSON Canonical Import Architecture
+
+Decision:
+
+GeoJSON imports shall use the same canonical import architecture employed by CSV and Excel imports.
+
+Processing Pipeline:
+
+- Source Adapter
+- Validation Engine
+- Quality Assessment
+- Duplicate Detection
+- Staging Layer
+- Import Audit Logging
+
+Reason:
+
+All import mechanisms must follow a consistent governance, validation, auditing, and recovery model.
+
+Impact:
+
+GeoJSON imports become fully integrated into the PPCIS Import Platform architecture.
+
+Status:
+APPROVED
+
 # Decision 022
 
 Date: 2026-06-02
@@ -909,3 +940,44 @@ Import strategies can scale as dataset volume increases.
 Status:
 APPROVED
 
+---
+
+# Decision 034
+
+Date: 2026-06-05
+
+Title:
+Application Data Access Pattern
+
+Decision:
+
+PPCIS shall implement the Repository Pattern for all persistence operations.
+
+Repositories shall encapsulate:
+
+- Create operations
+- Read operations
+- Update operations
+- Delete operations
+- Query logic
+
+Services shall encapsulate:
+
+- Business logic
+- Validation
+- Authorization checks
+- Workflow orchestration
+- Transaction management
+
+Application components shall not directly access database persistence mechanisms outside approved repositories.
+
+Reason:
+
+Separation of concerns improves maintainability, testability, scalability, and governance compliance.
+
+Impact:
+
+All future PPCIS domains shall implement repositories before service-layer business logic is introduced.
+
+Status:
+APPROVED
