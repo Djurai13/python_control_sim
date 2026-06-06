@@ -1,4 +1,7 @@
-from datetime import datetime
+from datetime import (
+    datetime,
+    UTC,
+)
 
 
 class SimulationRun:
@@ -21,7 +24,9 @@ class SimulationRun:
         self.status = status
 
         self.created_at = (
-            datetime.utcnow()
+            datetime.now(
+                UTC
+            )
         )
 
     def mark_running(
