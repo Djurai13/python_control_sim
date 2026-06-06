@@ -13,3 +13,5 @@ python-dotenv
 geoalchemy2
 
 pytest
+
+openpyxl
